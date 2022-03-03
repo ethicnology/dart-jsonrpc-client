@@ -1,39 +1,27 @@
-<!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
-
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages). 
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages). 
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+# dart-jsonrpc-client 
+makes easy to communicate through [JSON-RPC](https://jsonrpg.org) 1.0 & 2.0 over HTTP in [dart lang](https://dart.dev) and [flutter](https://flutter.dev)
 
 ## Features
-
-TODO: List what your package can do. Maybe include images, gifs, or videos.
-
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+- [JSON-RPC 1.0](https://jsonrpg.org/specification_v1)
+- [JSON-RPC 2.0](https://jsonrpg.org/specification)
+- Basic authentication: [RFC 7617](https://datatracker.ietf.org/doc/html/rfc7617)
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
+This show how to query a [bitcoin-core](https://developer.bitcoin.org/reference/rpc/) node with basic authentication
 
 ```dart
-const like = 'sample';
+import 'package:jsonrpc_client/jsonrpc_client.dart';
+
+void main() async {
+  var rpc = Client.withBasicAuth('127.0.0.1', 18332, '1.0', false, 'user', 'pass');
+  var response = await rpc.call("getblockchaininfo");
+  print(response.result);
+}
 ```
 
-## Additional information
+## Security notice
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+[Basic Authentication](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication) scheme used as it sends the credentials encoded but not encrypted. This would be completely insecure unless the exchange was over a secure connection (HTTPS/TLS).** 
+
+To improve the security please take a look at [bitcoin script rpcauth.py](https://github.com/bitcoin/bitcoin/blob/master/share/rpcauth/rpcauth.py) it provide a way to generate a hashed password.
