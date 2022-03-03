@@ -5,17 +5,35 @@ import 'response.dart';
 class Client {
   String host;
   int port;
-  String user;
-  String pass;
-  bool isSecure;
+  String version;
+  String user = "";
+  String pass = "";
+  bool ssl;
   late Uri url;
   late String auth;
 
+  Client(
+    this.host,
+    this.port,
+    this.version,
+    this.ssl,
+  ) {
+    late String protocol;
+    ssl == true ? protocol = 'https' : protocol = 'http';
+    url = Uri.parse('$protocol://$host:$port');
+  }
+
   Client.withBasicAuth(
-      this.host, this.port, this.isSecure, this.user, this.pass) {
-    late String ssl;
-    isSecure == true ? ssl = 'https' : ssl = 'http';
-    url = Uri.parse('$ssl://$host:$port');
+    this.host,
+    this.port,
+    this.version,
+    this.ssl,
+    this.user,
+    this.pass,
+  ) {
+    late String protocol;
+    ssl == true ? protocol = 'https' : protocol = 'http';
+    url = Uri.parse('$protocol://$host:$port');
     auth = 'Basic ' + base64Encode(utf8.encode('$user:$pass'));
   }
 
@@ -25,7 +43,7 @@ class Client {
       'Authorization': auth
     };
     var body = jsonEncode({
-      'jsonrpc': '1.0',
+      'jsonrpc': version,
       'method': method,
       'params': params,
       'id': '${DateTime.now().millisecondsSinceEpoch}'
