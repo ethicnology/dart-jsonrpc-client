@@ -1,8 +1,5 @@
-/// Support for doing something awesome.
-///
-/// More dartdocs go here.
+/// dart-jsonrpc-client makes easy to communicate through JSON-RPC 1.0 & 2.0 over HTTP in dart lang and flutter
 library jsonrpc_client;
 
-export 'src/jsonrpc_client_base.dart';
-
-// TODO: Export any libraries intended for clients of this package.
+export 'src/client.dart';
+export 'src/response.dart';
