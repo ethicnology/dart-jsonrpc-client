@@ -22,6 +22,6 @@ void main() async {
 
 ## Security notice
 
-[Basic Authentication](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication) scheme used as it sends the credentials encoded but not encrypted. This would be completely insecure unless the exchange was over a secure connection (HTTPS/TLS).** 
+[Basic Authentication](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication) scheme used as it sends the credentials encoded but not encrypted. **This would be completely insecure unless the exchange was over a secure connection (HTTPS/TLS).** 
 
 To improve the security please take a look at [bitcoin script rpcauth.py](https://github.com/bitcoin/bitcoin/blob/master/share/rpcauth/rpcauth.py) it provide a way to generate a hashed password.
