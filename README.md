@@ -6,6 +6,17 @@ makes easy to communicate through [JSON-RPC](https://jsonrpg.org) 1.0 & 2.0 over
 - [JSON-RPC 2.0](https://jsonrpg.org/specification)
 - Basic authentication: [RFC 7617](https://datatracker.ietf.org/doc/html/rfc7617)
 
+## Install
+
+This package is not published on pub.dev, so add these lines
+```yaml
+dependencies:
+  jsonrpc_client:
+   git:
+    url: https://github.com/ethicnology/dart-jsonrpc-client.git
+    ref: main
+```
+
 ## Usage
 
 This show how to query a [bitcoin-core](https://developer.bitcoin.org/reference/rpc/) node with basic authentication
