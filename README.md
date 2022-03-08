@@ -12,9 +12,9 @@ This package is not published on pub.dev, so add these lines
 ```yaml
 dependencies:
   jsonrpc_client:
-   git:
-    url: https://github.com/ethicnology/dart-jsonrpc-client.git
-    ref: main
+    git:
+      url: https://github.com/ethicnology/dart-jsonrpc-client.git
+      ref: main
 ```
 
 ## Usage
