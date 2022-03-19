@@ -1,6 +1,6 @@
 name: jsonrpc_client
 description: Make easy to communicate through JSON-RPC 1.0 & 2.0 over HTTP in dart lang and flutter.
-version: 1.0.0
+version: 1.1.0
 homepage: https://github.com/ethicnology/dart-jsonrpc-client
 
 environment:

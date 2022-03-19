@@ -8,32 +8,25 @@ class Client {
   String version;
   String user = "";
   String pass = "";
-  bool ssl;
+  String auth = "";
   late Uri url;
-  late String auth;
 
   Client(
     this.host,
     this.port,
     this.version,
-    this.ssl,
   ) {
-    late String protocol;
-    ssl == true ? protocol = 'https' : protocol = 'http';
-    url = Uri.parse('$protocol://$host:$port');
+    url = Uri.parse('$host:$port');
   }
 
   Client.withBasicAuth(
     this.host,
     this.port,
     this.version,
-    this.ssl,
     this.user,
     this.pass,
   ) {
-    late String protocol;
-    ssl == true ? protocol = 'https' : protocol = 'http';
-    url = Uri.parse('$protocol://$host:$port');
+    url = Uri.parse('$host:$port');
     auth = 'Basic ' + base64Encode(utf8.encode('$user:$pass'));
   }
 

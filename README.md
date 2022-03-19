@@ -25,7 +25,7 @@ This show how to query a [bitcoin-core](https://developer.bitcoin.org/reference/
 import 'package:jsonrpc_client/jsonrpc_client.dart';
 
 void main() async {
-  var rpc = Client.withBasicAuth('127.0.0.1', 18332, '1.0', false, 'user', 'pass');
+  var rpc = Client.withBasicAuth('http://127.0.0.1', 18332, '1.0', 'user', 'pass');
   var response = await rpc.call("getblockchaininfo");
   print(response.result);
 }
